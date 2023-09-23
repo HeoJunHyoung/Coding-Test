@@ -1,13 +1,7 @@
 def solution(n, control):
     
+    dictionary_control = dict(zip(['w','s','d','a'],[1,-1,10,-10]))
     for i in control:
-        if i=='w':
-            n+=1
-        elif i=='s':
-            n-=1
-        elif i=='d':
-            n+=10
-        else:
-            n-=10
-    
+        n += dictionary_control[i]
+        
     return n
