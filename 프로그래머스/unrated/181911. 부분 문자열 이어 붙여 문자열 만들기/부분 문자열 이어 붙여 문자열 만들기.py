@@ -1,14 +1,4 @@
 def solution(my_strings, parts):
     answer = ''
-    index1 = 0
-    index2 = 0
-    
-    for i in range(0, len(my_strings)):
-        index1 = parts[i][0]
-        index2 = parts[i][1]
-        
-        answer += my_strings[i][index1:index2+1]
-    
-    
-    
-    return answer
+
+    return ''.join([my_strings[i][parts[i][0]:parts[i][1]+1] for i in range(0, len(my_strings))])
