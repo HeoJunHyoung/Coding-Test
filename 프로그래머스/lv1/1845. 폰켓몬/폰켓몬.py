@@ -1,10 +1,4 @@
 def solution(nums):
     
-    pick_number = len(nums)//2
-    
-    nums = set(nums)
-    
-    if len(nums) > pick_number:
-        return pick_number
-    else:
-        return len(nums)
+                       
+    return len(nums)//2 if len(set(nums)) > len(nums)//2 else len(set(nums))
