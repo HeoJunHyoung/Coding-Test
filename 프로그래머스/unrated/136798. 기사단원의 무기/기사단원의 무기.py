@@ -10,8 +10,5 @@ def findYakNumber(x):
 
 def solution(number, limit, power):
     
-    iron_weight = 0
-    soldier_attack = [findYakNumber(i) if findYakNumber(i)<=limit else power for i in range(1, number+1)]
-    
-    return sum(soldier_attack)
+    return sum([findYakNumber(i) if findYakNumber(i)<=limit else power for i in range(1, number+1)])
     
