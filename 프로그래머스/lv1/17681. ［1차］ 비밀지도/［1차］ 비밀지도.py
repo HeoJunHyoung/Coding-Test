@@ -30,18 +30,12 @@ def solution(n, arr1, arr2):
                 
         result1.append(row1)
         result2.append(row2)
-        
-    #print(result1)
-    #print(result2)
     
     for i in range(n):
         temp = ''
         for j in range(n):
             temp += '#' if int(result1[i][j]) or int(result2[i][j]) else ' '
-            #temp += str(int(result1[i][j]) or int(result2[i][j]))
         result.append(temp)    
-        
-    #print(result)
     
     return result
     
