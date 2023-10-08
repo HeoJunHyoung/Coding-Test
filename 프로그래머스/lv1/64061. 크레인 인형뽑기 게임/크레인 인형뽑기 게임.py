@@ -8,12 +8,9 @@ def solution(board, moves):
         for j in range(len(board[i])):
             new_board[i].append(board[j][i])
             
-    #print(new_board)
     
-    for i in moves: # 1,5,3,5,1,2,1,4
-        
-        for j in range(len(new_board)): # 0 1 2 3 4
-            
+    for i in moves:
+        for j in range(len(new_board)):
             if new_board[i-1][j] != 0:
                 stack.append(new_board[i-1][j])
                 new_board[i-1][j] = 0
@@ -24,7 +21,6 @@ def solution(board, moves):
                 del stack[-1]
                 del stack[-1]
                 result += 2
-            
     
     return result
         
