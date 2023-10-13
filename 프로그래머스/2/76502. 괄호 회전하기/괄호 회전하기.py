@@ -11,11 +11,9 @@ def solution(s):
     for i in range(0, len(s)):
         count = 0
         rotated = s[i:] + s[0:i]
-        #print(rotated)
         dq = deque()
-        for j in range(0, len(s)):
-            dq.append(rotated[j])
-            #print(dq)
+        for j in (s[i:] + s[0:i]):
+            dq.append(j)
             if len(dq)>=2:
                 if dq[-2]+dq[-1]=='[]' or dq[-2]+dq[-1]=='()' or dq[-2]+dq[-1]=='{}':
                     count += 1
