@@ -24,22 +24,13 @@ def solution(n):
             temp = n//(3**jisoo)
             n = n - (temp) * (3**jisoo)
             answer += str(temp)
-        jisoo -= 1      
-    
-    # 뒤에 0 붙이기
-    #if jisoo != 0:
-        #for i in range(jisoo):
-            #answer += '0'
-    
-    lenStr = len(answer)
+        jisoo -= 1
     
     answer = str(int(answer[::-1]))
-    #print(answer)
     
     result = 1
-    
-    for i in range(lenStr): # 0 1 2 3 4
-        result = result + int(answer[i])*(3**(lenStr-i-1))
+    for i in range(len(answer)): # 0 1 2 3 4
+        result = result + int(answer[i])*(3**(len(answer)-i-1))
     
     return result - 1
     
