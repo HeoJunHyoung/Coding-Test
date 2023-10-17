@@ -2,6 +2,7 @@ def solution(n, left, right):
     
     answer = []
     
+    # N*N배열에서 행과 열은 몫과 나머지로 일반화된다.
     for i in range(left, right+1):
         a = i//n
         b = i%n
