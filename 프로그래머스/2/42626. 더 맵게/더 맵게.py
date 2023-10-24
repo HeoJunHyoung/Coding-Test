@@ -2,24 +2,18 @@ import heapq
 
 def solution(scoville, K):
     blend_count = 0
+    blend_scoville = 0
     heapq.heapify(scoville)
-    
+
     while scoville[0] < K:
-        
+        first = heapq.heappop(scoville)
+        if not scoville:
+            if first < K:
+                return -1
+        second = heapq.heappop(scoville)
+        blend_scoville = first + (second * 2)
+
+        heapq.heappush(scoville, blend_scoville)
         blend_count += 1
-        
-        min_one = heapq.heappop(scoville)
-        min_two = heapq.heappop(scoville)
-        
-        heapq.heappush(scoville, min_one + (min_two*2))
-        
-        if len(scoville)==2 and (scoville[0]+scoville[1]*2) < K:
-            return -1
-        
-    
+
     return blend_count
-    
-    
-        
-    
-    
