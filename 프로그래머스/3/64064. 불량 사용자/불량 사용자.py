@@ -1,27 +1,30 @@
 from itertools import permutations
 
-def check(users, banned_id):
+def checkSame(case, banned_id):
+    
     for i in range(len(banned_id)):
-        if len(users[i]) != len(banned_id[i]):
-            return False
-
-        for j in range(len(users[i])):
-            if banned_id[i][j] == "*":
-                continue
-            if banned_id[i][j] != users[i][j]:
+        if len(banned_id[i]) != len(case[i]):
                 return False
+            
+        for j in range(len(case[i])):
+            if banned_id[i][j] == '*':
+                continue
+            else:
+                if case[i][j] != banned_id[i][j]:
+                    return False
     return True
 
 def solution(user_id, banned_id):
-    user_permutation = list(permutations(user_id, len(banned_id)))
-    ban_set = []
-
-    for users in user_permutation:
-        if not check(users, banned_id):
+    
+    cases = list(permutations(user_id, len(banned_id)))
+    result = []
+    
+    for case in cases:
+        if not checkSame(case, banned_id):
             continue
         else:
-            users = set(users)
-            if users not in ban_set:
-                ban_set.append(users)
-
-    return len(ban_set)
+            case = set(case)
+            if case not in result:
+                result.append(case)
+    
+    return len(result)
