@@ -1,23 +1,19 @@
 from collections import deque
 
 def solution(people, limit):
+    result = 0
     
-    boat_count = 0
-    people = sorted(people)
-    dq = deque(people)
-    
+    dq = deque(sorted(people, reverse=True))
+    print(dq)
     while dq:
-        if dq[0] + dq[-1] > limit:
+        if dq[0] + dq[-1] <= limit:
+            result += 1
+            dq.popleft()
+            if len(dq) == 0:
+                break
             dq.pop()
-            boat_count += 1
         else:
-            if len(dq) < 2:
-                dq.pop()
-            elif len(dq) >= 2:
-                dq.popleft()
-                dq.pop()
-        
-            boat_count += 1
-    return boat_count
+            result += 1
+            dq.popleft()
     
-                
+    return result
