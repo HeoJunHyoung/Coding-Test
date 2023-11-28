@@ -1,21 +1,18 @@
 from itertools import permutations
 
 def solution(k, dungeons):
+    cases = list(permutations(dungeons, len(dungeons)))
+    result = 0
+    #print(cases)
     
-    explore_list = []
-    cases = list(permutations([i for i in range(len(dungeons))], len(dungeons)))
-    
-    for case in cases: # 0,1,2  0,2,1 ...
-        temp_k = k
-        explore_count = 0
-        
+    for case in cases:
+        current_fatigue = k
+        possible = 0
         for i in range(len(case)):
-            if temp_k >= dungeons[case[i]][0]:
-                temp_k -= dungeons[case[i]][1]
-                explore_count += 1
-        explore_list.append(explore_count)
-    
-    return max(explore_list)
-            
-        
-        
+            if current_fatigue >= case[i][0]:
+                current_fatigue -= case[i][1]
+                possible += 1
+            else:
+                break
+        result = max(possible, result)
+    return result
