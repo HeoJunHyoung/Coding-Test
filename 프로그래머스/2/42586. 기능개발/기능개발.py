@@ -2,7 +2,6 @@ def solution(progresses, speeds):
         
     finish_day = [(100-progresses[i])//speeds[i] if (100-progresses[i])%speeds[i]==0 else (100-progresses[i])//speeds[i]+1 for i in range(len(progresses))]
     result = []
-    print(finish_day)
     
     idx = 0
     while idx < len(progresses):
