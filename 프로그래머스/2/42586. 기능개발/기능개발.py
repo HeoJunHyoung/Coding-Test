@@ -1,29 +1,19 @@
 def solution(progresses, speeds):
-    
-    index = 0
-    count = 0
+        
+    finish_day = [(100-progresses[i])//speeds[i] if (100-progresses[i])%speeds[i]==0 else (100-progresses[i])//speeds[i]+1 for i in range(len(progresses))]
     result = []
+    print(finish_day)
     
-    while index < len(progresses):
-        count = 0
-        flag = False
+    idx = 0
+    while idx < len(progresses):
+        criterion_value = finish_day[idx] # 9
+        cnt = 0
         
-        while progresses[index] >= 100:
-            index += 1
-            count += 1
-            flag = True
-            if index == len(progresses):
+        while criterion_value >= finish_day[idx]:
+            idx += 1
+            cnt += 1
+            if idx >= len(progresses):
                 break
-            
-        
-        if flag == True:
-            result.append(count)
-        
-        for i in range(len(speeds)):
-            progresses[i] += speeds[i]
+        result.append(cnt)
     
     return result
-    
-    
-            
-            
